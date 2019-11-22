@@ -7,12 +7,15 @@ import { map } from 'rxjs/operators';
 })
 export class FirestoreService {
   /**
+   * AngularFirestore
+   */
+  private firestore: AngularFirestore;
+  /**
    * Construtor do service para utilizar várias classes ao mesmo tempo
-   * @param firestore - Parâmetro AngularFireStore
    * @param caminho - Parâmetro com o caminho da coleção
    * - Exemplo: "caminho"
    */
-  constructor(private firestore: AngularFirestore, private caminho: string) { }
+  constructor(private caminho: string) { }
 
   public listar() {
     return this.firestore.collection(this.caminho).snapshotChanges().pipe(
