@@ -22,9 +22,9 @@ export class LoginService {
       user => {
         loading.dismiss();
         if (user.user.emailVerified) {
-          this.route.navigate(['administracao']);
+          this.route.navigate(['sistema']);
         } else {
-          this.al.toast({ message: 'Acesso negado verifique seu email ' });
+          this.al.toast({ message: 'Acesso negado verifique seu email' });
           this.logout();
         }
       },

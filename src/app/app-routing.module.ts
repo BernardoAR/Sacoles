@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'sabor', loadChildren: './pages/private/sabor/sabor.module#SaborPageModule' },
   { path: 'login', loadChildren: './pages/public/login/login.module#LoginPageModule' },
   { path: 'cadastro', loadChildren: './pages/public/cadastro/cadastro.module#CadastroPageModule' },
-  { path: 'recupera-senha', loadChildren: './pages/public/recupera-senha/recupera-senha.module#RecuperaSenhaPageModule' }
+  { path: 'recupera-senha', loadChildren: './pages/public/recupera-senha/recupera-senha.module#RecuperaSenhaPageModule' },
+  { path: 'sistema', loadChildren: './pages/private/sistema/sistema.module#SistemaPageModule' }
 ];
 
 @NgModule({
