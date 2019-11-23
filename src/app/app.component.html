@@ -1,3 +1,33 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane>
+    <ion-menu disabled="true">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/sistema']">
+            <ion-icon name="home"></ion-icon>
+            Início
+          </ion-item>
+          <ion-item [routerLink]="['/venda']">
+            <ion-icon name="pricetags"></ion-icon>
+            Vender
+          </ion-item>
+          <ion-item [routerLink]="['/sacoles']">
+            Sacolés
+          </ion-item>
+          <ion-item [routerLink]="['/sabor']">
+            Sabores
+          </ion-item>
+          <ion-item [routerLink]="['/tipo']">
+            Tipo
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>
