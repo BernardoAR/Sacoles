@@ -1,9 +1,15 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>RecuperaSenha</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Recuperar a Senha</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <ion-item>
+    <ion-label position="floating"> Email </ion-label>
+    <ion-input [(ngModel)]="email"></ion-input>
+  </ion-item>
+  <ion-button color="primary" expand="block" (click)="recuperarSenha()">
+    <ion-icon name="add" slot="start"></ion-icon>
+    Recuperar Senha
+  </ion-button>
 </ion-content>

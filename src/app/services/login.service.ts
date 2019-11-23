@@ -15,7 +15,40 @@ export class LoginService {
   get usuarioLogado() {
     return this.af.auth.currentUser;
   }
-
+  /**
+   * Método utilizado para recuperar a senha
+   * @param email email que irá enviar a verificação
+   */
+  public async recuperarSenha(email: string) {
+    const loading = await this.al.loading();
+    this.af.auth.sendPasswordResetEmail(email)
+      .then(usuario => {
+        loading.dismiss();
+        this.al.alert('Email de recuperar a senha enviado', {
+          buttons: [
+            {
+              text: 'OK',
+              handler: () => {
+                this.route.navigate(['login']);
+              }
+            }
+          ]
+        });
+      },
+        error => {
+          loading.dismiss();
+          if (error.code == 'auth/invalid-email') {
+            this.al.toast({ message: 'Tipo de e-mail inexistente!' });
+          } else if (error.code == 'auth/user-not-found') {
+            this.al.toast({ message: 'Não possui usuário com esse e-mail' });
+          }
+        });
+  }
+  /**
+   * Método utilizado para fazer o login
+   * @param email email do usuário
+   * @param senha senha do usuário
+   */
   public async login(email: string, senha: string) {
     const loading = await this.al.loading();
     this.af.auth.signInWithEmailAndPassword(email, senha).then(

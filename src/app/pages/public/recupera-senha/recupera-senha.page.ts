@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-recupera-senha',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recupera-senha.page.scss'],
 })
 export class RecuperaSenhaPage implements OnInit {
-
-  constructor() { }
+  email = '';
+  constructor(private login: LoginService) { }
 
   ngOnInit() {
   }
-
+  public recuperarSenha(): void {
+    this.login.recuperarSenha(this.email);
+  }
 }
