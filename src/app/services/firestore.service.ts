@@ -7,25 +7,35 @@ import { map } from 'rxjs/operators';
 })
 export class FirestoreService {
   /**
-   * AngularFirestore
+   * Caminho
    */
-  private firestore: AngularFirestore;
+  private _caminho: string;
+  /**
+   * Seta o caminho
+   */
+  set caminho(value: string) {
+    this._caminho = value;
+  }
   /**
    * Construtor do service para utilizar várias classes ao mesmo tempo
    * @param caminho - Parâmetro com o caminho da coleção
    * - Exemplo: "caminho"
    */
-  constructor(private caminho: string) { }
+  constructor(private firestore: AngularFirestore) {}
 
   public listar() {
-    return this.firestore.collection(this.caminho).snapshotChanges().pipe(
-      map(item => {
-        return item.map((doc: any) => {
-          const dados = doc.payload.data();
-          dados.id = doc.payload.uid;
-          return dados
-        })
-      }));
+    return this.firestore
+      .collection(this.caminho)
+      .snapshotChanges()
+      .pipe(
+        map(item =>
+          item.map(itens => {
+            const uid = itens.payload.doc.id;
+            const dados = itens.payload.doc.data();
+            return { uid, ...dados };
+          })
+        )
+      );
   }
   /**
    * Método utilizado para a gravação de um item qualquer
@@ -45,7 +55,6 @@ export class FirestoreService {
   }
   /**
    * Método utilizado para deletar um dado específico
-   * @param uid
    */
   public deletar(uid: string) {
     const url = this.caminho + '/' + uid;

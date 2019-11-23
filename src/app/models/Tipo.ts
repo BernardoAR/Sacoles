@@ -1,9 +1,4 @@
-import { FirestoreService } from '../services/firestore.service';
-
-export class Tipo extends FirestoreService {
+export class Tipo {
   nome: string;
   valor: number;
-  constructor() {
-    super('tipo');
-  }
 }
