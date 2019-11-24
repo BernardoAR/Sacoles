@@ -18,14 +18,14 @@ export class FirestoreService {
   }
   /**
    * Construtor do service para utilizar várias classes ao mesmo tempo
-   * @param caminho - Parâmetro com o caminho da coleção
+   * @param _caminho - Parâmetro com o caminho da coleção
    * - Exemplo: "caminho"
    */
   constructor(private firestore: AngularFirestore) {}
 
   public listar() {
     return this.firestore
-      .collection(this.caminho)
+      .collection(this._caminho)
       .snapshotChanges()
       .pipe(
         map(item =>
@@ -42,7 +42,7 @@ export class FirestoreService {
    * @param item objeto a ser gravado
    */
   public gravar(item: object) {
-    this.firestore.collection(this.caminho).add(item);
+    this.firestore.collection(this._caminho).add({ ...item });
   }
   /**
    * Método utilizado para atualizar os itens
@@ -50,14 +50,14 @@ export class FirestoreService {
    * @param uid Unique ID do objeto que irá utilizar
    */
   public atualizar(item: object, uid: string) {
-    const url = this.caminho + '/' + uid;
+    const url = this._caminho + '/' + uid;
     this.firestore.doc(url).update(item);
   }
   /**
    * Método utilizado para deletar um dado específico
    */
   public deletar(uid: string) {
-    const url = this.caminho + '/' + uid;
+    const url = this._caminho + '/' + uid;
     this.firestore.doc(url).delete();
   }
 }
