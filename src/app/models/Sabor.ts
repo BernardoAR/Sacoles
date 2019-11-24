@@ -1,5 +1,3 @@
-import { FirestoreService } from '../services/firestore.service';
-
-export class Sabor extends FirestoreService {
+export class Sabor {
   nome: string;
 }
