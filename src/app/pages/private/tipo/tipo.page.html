@@ -18,6 +18,14 @@
         <ion-label position="floating">Valor</ion-label>
         <ion-input type="number" [(ngModel)]="tipoSacole.valor"></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label>Tamanho</ion-label>
+        <ion-select [(ngModel)]="tipoSacole.tamanho">
+          <ion-select-option *ngFor="let item of tamanhos | async" value="{{item.uid}}"
+            >{{ item.nome }}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
       <ion-button expand="block" color="primary" (click)="gravar()">
         Salvar
       </ion-button>

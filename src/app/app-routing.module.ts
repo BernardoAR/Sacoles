@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/public/login/login.module#LoginPageModule' },
   { path: 'cadastro', loadChildren: './pages/public/cadastro/cadastro.module#CadastroPageModule' },
   { path: 'recupera-senha', loadChildren: './pages/public/recupera-senha/recupera-senha.module#RecuperaSenhaPageModule' },
-  { path: 'sistema', loadChildren: './pages/private/sistema/sistema.module#SistemaPageModule', canActivate: [SessionGuard] }
+  { path: 'sistema', loadChildren: './pages/private/sistema/sistema.module#SistemaPageModule', canActivate: [SessionGuard] },
+  { path: 'tamanho', loadChildren: './pages/private/tamanho/tamanho.module#TamanhoPageModule' }
 ];
 
 @NgModule({

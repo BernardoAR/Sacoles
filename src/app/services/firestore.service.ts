@@ -7,25 +7,15 @@ import { map } from 'rxjs/operators';
 })
 export class FirestoreService {
   /**
-   * Caminho
-   */
-  private _caminho: string;
-  /**
-   * Seta o caminho
-   */
-  set caminho(value: string) {
-    this._caminho = value;
-  }
-  /**
    * Construtor do service para utilizar várias classes ao mesmo tempo
    * @param _caminho - Parâmetro com o caminho da coleção
    * - Exemplo: "caminho"
    */
   constructor(private firestore: AngularFirestore) {}
 
-  public listar() {
+  public listar(caminho: string) {
     return this.firestore
-      .collection(this._caminho)
+      .collection(caminho)
       .snapshotChanges()
       .pipe(
         map(item =>
@@ -41,24 +31,24 @@ export class FirestoreService {
    * Método utilizado para a gravação de um item qualquer
    * @param item objeto a ser gravado
    */
-  public gravar(item: any) {
+  public gravar(item: any, caminho: string) {
     // Verifica se tem um UID
     console.log(item.uid);
     if (item.uid) {
       // Se existir, trata-se de uma atualização
-      const url = this._caminho + '/' + item.uid;
+      const url = caminho + '/' + item.uid;
       console.log(url);
       this.firestore.doc(url).update({ ...item });
     } else {
       // cria uma nova entrada
-      this.firestore.collection(this._caminho).add({ ...item });
+      this.firestore.collection(caminho).add({ ...item });
     }
   }
   /**
    * Método utilizado para deletar um dado específico
    */
-  public deletar(uid: string) {
-    const url = this._caminho + '/' + uid;
+  public deletar(uid: string, caminho: string) {
+    const url = caminho + '/' + uid;
     this.firestore.doc(url).delete();
   }
 }

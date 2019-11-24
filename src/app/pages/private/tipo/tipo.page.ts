@@ -10,21 +10,22 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class TipoPage implements OnInit {
   // Tipos é para a listagem, já o tipo sacolé para o seu método
   tipos: any;
+  tamanhos: any;
   tipoSacole: Tipo;
   constructor(private fs: FirestoreService) {
-    fs.caminho = 'tipo';
     this.tipoSacole = new Tipo();
-    this.tipos = fs.listar();
+    this.tipos = fs.listar('tipo');
+    this.tamanhos = fs.listar('tamanho');
   }
   public gravar() {
-    this.fs.gravar(this.tipoSacole);
+    this.fs.gravar(this.tipoSacole, 'tipo');
     this.tipoSacole = new Tipo();
   }
   public editar(item: Tipo) {
     this.tipoSacole = item;
   }
   public apagar(uid: string) {
-    this.fs.deletar(uid);
+    this.fs.deletar(uid, 'tipo');
   }
   ngOnInit() {}
 }

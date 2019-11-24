@@ -1,9 +1,36 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>sabor</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+      <ion-title>Sabores</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input [(ngModel)]="saborSacole.nome"></ion-input>
+      </ion-item>
+      <ion-button expand="block" color="primary" (click)="gravar()">
+        Salvar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 
+  <ion-item-sliding *ngFor="let item of sabores | async">
+    <ion-item>
+      <ion-label> Sabor: {{ item.nome }} </ion-label>
+    </ion-item>
+    <ion-item-options>
+      <ion-item-option color="app">
+        <ion-icon name="create" (click)="editar(item)"></ion-icon>
+      </ion-item-option>
+      <ion-item-option color="danger" (click)="apagar(item.uid)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
 </ion-content>
