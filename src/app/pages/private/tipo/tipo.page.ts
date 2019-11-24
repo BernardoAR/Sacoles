@@ -17,8 +17,14 @@ export class TipoPage implements OnInit {
     this.tipos = fs.listar();
   }
   public gravar() {
-    console.log(this.tipoSacole);
     this.fs.gravar(this.tipoSacole);
+    this.tipoSacole = new Tipo();
+  }
+  public editar(item: Tipo) {
+    this.tipoSacole = item;
+  }
+  public apagar(uid: string) {
+    this.fs.deletar(uid);
   }
   ngOnInit() {}
 }

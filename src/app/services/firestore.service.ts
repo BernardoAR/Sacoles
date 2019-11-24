@@ -41,17 +41,18 @@ export class FirestoreService {
    * Método utilizado para a gravação de um item qualquer
    * @param item objeto a ser gravado
    */
-  public gravar(item: object) {
-    this.firestore.collection(this._caminho).add({ ...item });
-  }
-  /**
-   * Método utilizado para atualizar os itens
-   * @param item objeto que irá ser atualizado
-   * @param uid Unique ID do objeto que irá utilizar
-   */
-  public atualizar(item: object, uid: string) {
-    const url = this._caminho + '/' + uid;
-    this.firestore.doc(url).update(item);
+  public gravar(item: any) {
+    // Verifica se tem um UID
+    console.log(item.uid);
+    if (item.uid) {
+      // Se existir, trata-se de uma atualização
+      const url = this._caminho + '/' + item.uid;
+      console.log(url);
+      this.firestore.doc(url).update({ ...item });
+    } else {
+      // cria uma nova entrada
+      this.firestore.collection(this._caminho).add({ ...item });
+    }
   }
   /**
    * Método utilizado para deletar um dado específico

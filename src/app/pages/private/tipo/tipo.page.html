@@ -31,9 +31,9 @@
     </ion-item>
     <ion-item-options>
       <ion-item-option color="app">
-        <ion-icon name="create"></ion-icon>
+        <ion-icon name="create" (click)="editar(item)"></ion-icon>
       </ion-item-option>
-      <ion-item-option color="danger">
+      <ion-item-option color="danger" (click)="apagar(item.uid)">
         <ion-icon name="trash"></ion-icon>
       </ion-item-option>
     </ion-item-options>
