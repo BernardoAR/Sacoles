@@ -30,7 +30,12 @@
           >
         </ion-select>
       </ion-item>
-      <ion-button expand="block" color="primary" (click)="gravar()">
+      <ion-button
+        expand="block"
+        color="primary"
+        (click)="gravar()"
+        [disabled]="!sacole.quantidade || !sacole.tipo || !sacole.quantidade || sacole.quantidade < 0 "
+      >
         Salvar
       </ion-button>
     </ion-card-content>
