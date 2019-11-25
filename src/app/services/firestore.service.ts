@@ -72,7 +72,14 @@ export class FirestoreService {
     if (item.uid) {
       // Se existir, trata-se de uma atualização
       const url = `${caminho}/${item.uid}`;
-      this.firestore.doc(url).update({ ...item });
+      this.firestore
+        .doc(url)
+        .update({ ...item })
+        .catch(error => {
+          if (error.code === 'not-found') {
+            this.firestore.collection(caminho).add({ ...item });
+          }
+        });
     } else {
       // cria uma nova entrada
       this.firestore.collection(caminho).add({ ...item });
