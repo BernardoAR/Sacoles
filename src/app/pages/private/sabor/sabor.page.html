@@ -14,7 +14,12 @@
         <ion-label position="floating">Nome</ion-label>
         <ion-input [(ngModel)]="saborSacole.nome"></ion-input>
       </ion-item>
-      <ion-button expand="block" color="primary" (click)="gravar()">
+      <ion-button
+        expand="block"
+        color="primary"
+        (click)="gravar()"
+        [disabled]="saborSacole.nome === undefined || saborSacole.nome == ''"
+      >
         Salvar
       </ion-button>
     </ion-card-content>

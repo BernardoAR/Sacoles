@@ -21,6 +21,7 @@ export class SaborPage implements OnInit {
   }
   public editar(item: Sabor) {
     this.saborSacole = item;
+    console.log(this.saborSacole);
   }
   public apagar(uid: string) {
     this.fs.deletar(uid, 'sabor');
