@@ -7,7 +7,6 @@ import { map } from 'rxjs/operators';
 })
 export class FirestoreService {
   constructor(private firestore: AngularFirestore) {}
-
   public listar(caminho: string) {
     return this.firestore
       .collection(caminho)
@@ -28,7 +27,6 @@ export class FirestoreService {
    */
   public gravar(item: any, caminho: string) {
     // Verifica se tem um UID
-    console.log(item.uid);
     if (item.uid) {
       // Se existir, trata-se de uma atualização
       const url = `${caminho}/${item.uid}`;

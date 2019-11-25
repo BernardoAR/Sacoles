@@ -21,7 +21,7 @@
       <ion-item>
         <ion-label>Tamanho</ion-label>
         <ion-select [(ngModel)]="tipoSacole.tamanho">
-          <ion-select-option *ngFor="let item of tamanhos | async" value="{{item.uid}}"
+          <ion-select-option *ngFor="let item of tamanhos | async" [(value)]="item"
             >{{ item.nome }}</ion-select-option
           >
         </ion-select>
@@ -34,8 +34,10 @@
 
   <ion-item-sliding *ngFor="let item of tipos | async">
     <ion-item>
-      <ion-label> Tipo: {{ item.nome }} </ion-label>
-      <ion-label> Valor: {{ item.valor | currency:'BRL'}} </ion-label>
+      <ion-label> Tipo: {{ item.nome }} <br />({{ item.tamanho.nome}})</ion-label>
+      <ion-label>
+        Valor: {{ item.valor | currency:'BRL'}}
+      </ion-label>
     </ion-item>
     <ion-item-options>
       <ion-item-option color="app">
