@@ -25,4 +25,23 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
+  <ion-card>
+    <ion-card-header class="ion-text-center"
+      ><ion-card-title>Sacolés</ion-card-title></ion-card-header
+    >
+    <ion-card-content>
+      <ion-card *ngFor="let item of sacoles | async">
+        <ion-card-header
+          class="ion-text-center"
+          [color]="item.quantidade <= 5? 'danger': item.quantidade <= 10? 'warning' : 'success'"
+          >{{item.sabor.nome}} ({{item.tipo.tamanho.nome}})
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <ion-label>Quantidade: {{item.quantidade}}</ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
