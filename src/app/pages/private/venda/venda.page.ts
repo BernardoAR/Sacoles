@@ -18,7 +18,7 @@ export class VendaPage implements OnInit {
     this.vendaSacole = new Venda();
     this.quantidade = 0;
     this.sacoles = fs.listar('sacole');
-    this.vendas = fs.listar('venda');
+    this.vendas = fs.listarCond('venda', 'pago', '==', '0');
   }
   public gravar() {
     console.log(this.vendaSacole);
@@ -26,7 +26,7 @@ export class VendaPage implements OnInit {
     this.vendaSacole.sacoles = {
       quantidade: this.quantidade,
       valor: this.quantidade * this.sacole.tipo.valor,
-      sabor: this.sacole.uid
+      sabor: this.sacole.sabor.nome
     };
     // Atualiza os valores do Sacolé
     this.sacole.quantidade -= this.quantidade;
@@ -34,6 +34,7 @@ export class VendaPage implements OnInit {
     this.fs.gravar(this.sacole, 'sacole');
     this.fs.gravar(this.vendaSacole, 'venda');
     this.vendaSacole = new Venda();
+    this.quantidade = 0;
   }
   public editar(item: Venda) {
     this.vendaSacole = item;

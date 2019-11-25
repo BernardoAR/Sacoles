@@ -7,6 +7,29 @@ import { map } from 'rxjs/operators';
 })
 export class FirestoreService {
   constructor(private firestore: AngularFirestore) {}
+  /**
+   * Método utilizado para listar por meio a uma condicional de Where
+   * @param campo campo da condição
+   * @param cond a condição em si só
+   * @param value o valor correspondente
+   */
+  public listarCond(caminho: string, campo: string, cond: any, value: any) {
+    return this.firestore
+      .collection(caminho, ref => ref.where(campo, cond, value))
+      .snapshotChanges()
+      .pipe(
+        map(item =>
+          item.map(itens => {
+            const uid = itens.payload.doc.id;
+            const dados = itens.payload.doc.data();
+            return { uid, ...dados };
+          })
+        )
+      );
+  }
+  /**
+   * Método utilizado para a listagem
+   */
   public listar(caminho: string) {
     return this.firestore
       .collection(caminho)
