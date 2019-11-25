@@ -12,6 +12,12 @@ export class SacolesPage implements OnInit {
   sabores: any;
   sacoles: any;
   sacole: Sacole;
+  compareFn = this._compareFn.bind(this);
+  // Método para fazer as comparações
+  _compareFn(a, b) {
+    // Checa os uid
+    return a.uid === b.uid;
+  }
   constructor(private fs: FirestoreService) {
     this.sacole = new Sacole();
     this.sacoles = fs.listar('sacole');

@@ -12,6 +12,12 @@ export class TipoPage implements OnInit {
   tipos: any;
   tamanhos: any;
   tipoSacole: Tipo;
+  compareFn = this._compareFn.bind(this);
+  // Método para fazer as comparações
+  _compareFn(a, b) {
+    // Checa os uid
+    return a.uid === b.uid;
+  }
   constructor(private fs: FirestoreService) {
     this.tipoSacole = new Tipo();
     this.tipos = fs.listar('tipo');

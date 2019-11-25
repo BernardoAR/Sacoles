@@ -14,6 +14,12 @@ export class VendaPage implements OnInit {
   sacole: any;
   quantidade: number;
   uid: string;
+  compareFn = this._compareFn.bind(this);
+  // Método para fazer as comparações
+  _compareFn(a, b) {
+    // Checa os uid
+    return a.uid === b.uid;
+  }
   constructor(private fs: FirestoreService) {
     this.vendaSacole = new Venda();
     this.quantidade = 0;

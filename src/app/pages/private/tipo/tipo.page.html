@@ -20,8 +20,8 @@
       </ion-item>
       <ion-item>
         <ion-label>Tamanho</ion-label>
-        <ion-select [(ngModel)]="tipoSacole.tamanho">
-          <ion-select-option *ngFor="let item of tamanhos | async" [(value)]="item"
+        <ion-select [compareWith]="compareFn" [(ngModel)]="tipoSacole.tamanho">
+          <ion-select-option *ngFor="let item of tamanhos | async" [value]="item"
             >{{ item.nome }}</ion-select-option
           >
         </ion-select>

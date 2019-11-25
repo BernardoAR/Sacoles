@@ -16,7 +16,7 @@
       </ion-item>
       <ion-item>
         <ion-label>Tipo</ion-label>
-        <ion-select [(ngModel)]="sacole.tipo">
+        <ion-select [(ngModel)]="sacole.tipo" [compareWith]="compareFn">
           <ion-select-option *ngFor="let item of tipos | async" [(value)]="item"
             >{{ item.nome }} ({{item.tamanho.nome}})</ion-select-option
           >
@@ -24,7 +24,7 @@
       </ion-item>
       <ion-item>
         <ion-label>Sabor</ion-label>
-        <ion-select [(ngModel)]="sacole.sabor">
+        <ion-select [(ngModel)]="sacole.sabor" [compareWith]="compareFn">
           <ion-select-option *ngFor="let item of sabores | async" [(value)]="item"
             >{{ item.nome }}</ion-select-option
           >
@@ -38,7 +38,10 @@
 
   <ion-item-sliding *ngFor="let item of sacoles | async">
     <ion-item>
-      <ion-label> Sabor: {{item.sabor.nome}} <br> Tipo: {{ item.tipo.nome }}</ion-label>
+      <ion-label>
+        Sabor: {{item.sabor.nome}} <br />
+        Tipo: {{ item.tipo.nome }}</ion-label
+      >
       <ion-label> Quantidade: {{item.quantidade}}</ion-label>
     </ion-item>
     <ion-item-options>

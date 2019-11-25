@@ -44,11 +44,10 @@
           </ion-item>
           <ion-item>
             <ion-label>Sacolé</ion-label>
-            <ion-select [(ngModel)]="sacole">
+            <ion-select [(ngModel)]="sacole" [compareWith]="compareFn">
               <ion-select-option
                 *ngFor="let item of sacoles | async"
                 [(value)]="item"
-                [selected]="item.uid == uid"
                 >{{ item.sabor.nome }} - {{ item.tipo.valor | currency:'BRL'}}</ion-select-option
               >
             </ion-select>
