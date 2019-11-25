@@ -1,8 +1,9 @@
-export class Vendas {
-  quantidade: number;
+import { SacolesVenda } from './SacolesVenda';
+
+export class Venda {
   data: Date;
   quem: string;
   pago: boolean;
   isento?: boolean;
-  sacole: string;
+  sacoles: SacolesVenda;
 }
