@@ -19,8 +19,7 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.ns.notificacaoDiaria();
-    this.ns.scheduleNotification();
+
   }
 
   public entrar(): void {
