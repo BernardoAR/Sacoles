@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  constructor(private af: AngularFireAuth, private al: AlertService, private route: Router) { }
+  constructor(private af: AngularFireAuth, private al: AlertService, private route: Router) {}
 
   get usuarioLogado() {
     return this.af.auth.currentUser;
@@ -21,8 +21,8 @@ export class LoginService {
    */
   public async recuperarSenha(email: string) {
     const loading = await this.al.loading();
-    this.af.auth.sendPasswordResetEmail(email)
-      .then(usuario => {
+    this.af.auth.sendPasswordResetEmail(email).then(
+      usuario => {
         loading.dismiss();
         this.al.alert('Email de recuperar a senha enviado', {
           buttons: [
@@ -35,14 +35,15 @@ export class LoginService {
           ]
         });
       },
-        error => {
-          loading.dismiss();
-          if (error.code == 'auth/invalid-email') {
-            this.al.toast({ message: 'Tipo de e-mail inexistente!' });
-          } else if (error.code == 'auth/user-not-found') {
-            this.al.toast({ message: 'Não possui usuário com esse e-mail' });
-          }
-        });
+      error => {
+        loading.dismiss();
+        if (error.code === 'auth/invalid-email') {
+          this.al.toast({ message: 'Tipo de e-mail inexistente!' });
+        } else if (error.code === 'auth/user-not-found') {
+          this.al.toast({ message: 'Não possui usuário com esse e-mail' });
+        }
+      }
+    );
   }
   /**
    * Método utilizado para fazer o login

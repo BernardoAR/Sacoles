@@ -9,12 +9,12 @@ import { LoadingOptions, ToastOptions, AlertOptions } from '@ionic/core';
  * Classe para os serviços de alerta, para as mensagens necessárias e tudo mais
  */
 export class AlertService {
-
   constructor(
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController
-  ) { }
+  ) {}
+
   /**
    * Método utilizado para dar o alerta
    * @param msg mensagem a ser utilizada
@@ -35,7 +35,6 @@ export class AlertService {
   }
   /**
    * Método utilizado para o carregamento dinâmico até finalizar
-   * @param options
    */
   async loading(options?: LoadingOptions): Promise<HTMLIonLoadingElement> {
     const loading = await this.loadingCtrl.create({
