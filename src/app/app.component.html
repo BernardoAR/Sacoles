@@ -1,32 +1,36 @@
 <ion-app>
-  <ion-split-pane>
-    <ion-menu disabled="true">
+  <ion-split-pane when="xg" contentId="menu-content">
+    <ion-menu disabled="true" contentId="menu-content">
       <ion-header>
         <ion-toolbar color="primary">
-          <ion-title>Menu</ion-title>
+          <ion-title class="ion-text-center">Menu</ion-title>
         </ion-toolbar>
       </ion-header>
       <ion-content>
         <ion-menu-toggle>
-          <ion-item [routerLink]="['/venda']">
-            <ion-icon name="pricetags"></ion-icon>
-            Vender
-          </ion-item>
-          <ion-item [routerLink]="['/sacoles']">
-            Sacolés
-          </ion-item>
-          <ion-item [routerLink]="['/sabor']">
-            Sabores
-          </ion-item>
-          <ion-item [routerLink]="['/tipo']">
-            Tipo
-          </ion-item>
-          <ion-item [routerLink]="['/tamanho']">
-            Tamanho
-          </ion-item>
+          <ion-list>
+            <ion-item [routerLink]="['/venda']">
+              <ion-icon name="pricetags"></ion-icon>
+              Vender
+            </ion-item>
+            <ion-list>
+              <ion-item [routerLink]="['/sacoles']">
+                Sacolés
+              </ion-item>
+              <ion-item [routerLink]="['/sabor']">
+                Sabores
+              </ion-item>
+              <ion-item [routerLink]="['/tipo']">
+                Tipo
+              </ion-item>
+              <ion-item [routerLink]="['/tamanho']">
+                Tamanho
+              </ion-item>
+            </ion-list>
+          </ion-list>
         </ion-menu-toggle>
       </ion-content>
     </ion-menu>
-    <ion-router-outlet main></ion-router-outlet>
+    <ion-router-outlet id="menu-content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>

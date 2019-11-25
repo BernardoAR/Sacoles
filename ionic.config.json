@@ -1,5 +1,7 @@
 {
   "name": "Sacoles",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
