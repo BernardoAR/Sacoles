@@ -10,6 +10,25 @@ export class FirestoreService {
   /**
    * Método utilizado para listar por meio a uma condicional de Where
    * @param campo campo da condição
+   * @param tipo asc|desc
+   */
+  public listarOrd(caminho: string, campo: string, tipo: any) {
+    return this.firestore
+      .collection(caminho, ref => ref.orderBy(campo, tipo))
+      .snapshotChanges()
+      .pipe(
+        map(item =>
+          item.map(itens => {
+            const uid = itens.payload.doc.id;
+            const dados = itens.payload.doc.data();
+            return { uid, ...dados };
+          })
+        )
+      );
+  }
+  /**
+   * Método utilizado para listar por meio a uma condicional de Where
+   * @param campo campo da condição
    * @param cond a condição em si só
    * @param value o valor correspondente
    */
