@@ -1,5 +1,8 @@
+import { Sabor } from './Sabor';
+import { Tipo } from './Tipo';
+
 export class Sacole {
   quantidade: number;
-  sabor: string;
-  tipo: string;
+  sabor: Sabor;
+  tipo: Tipo;
 }
