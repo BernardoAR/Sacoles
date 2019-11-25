@@ -6,11 +6,6 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FirestoreService {
-  /**
-   * Construtor do service para utilizar várias classes ao mesmo tempo
-   * @param _caminho - Parâmetro com o caminho da coleção
-   * - Exemplo: "caminho"
-   */
   constructor(private firestore: AngularFirestore) {}
 
   public listar(caminho: string) {
@@ -36,8 +31,7 @@ export class FirestoreService {
     console.log(item.uid);
     if (item.uid) {
       // Se existir, trata-se de uma atualização
-      const url = caminho + '/' + item.uid;
-      console.log(url);
+      const url = `${caminho}/${item.uid}`;
       this.firestore.doc(url).update({ ...item });
     } else {
       // cria uma nova entrada
@@ -48,7 +42,7 @@ export class FirestoreService {
    * Método utilizado para deletar um dado específico
    */
   public deletar(uid: string, caminho: string) {
-    const url = caminho + '/' + uid;
+    const url = `${caminho}/${uid}`;
     this.firestore.doc(url).delete();
   }
 }
