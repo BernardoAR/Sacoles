@@ -31,7 +31,15 @@
     <ion-card-header class="ion-text-center"
       ><ion-card-title>Sacolés</ion-card-title></ion-card-header
     >
-    <ion-card-content *ngIf="(sacoles | async)?.length==0">
+    <ion-card *ngIf="(sacoles | async)?.length ==0">
+      <ion-card-header></ion-card-header>
+      <ion-card-content class="ion-text-center">
+        <ion-spinner name="bubbles"></ion-spinner>
+        <ion-label>Não possui registros, quando possuir aparecerá aqui.</ion-label>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card-content>
       <ion-card *ngFor="let item of sacoles | async">
         <ion-card-header
           class="ion-text-center"
