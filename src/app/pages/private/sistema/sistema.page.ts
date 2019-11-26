@@ -25,7 +25,8 @@ export class SistemaPage implements OnInit {
       const codigo = resp.weather[0].icon;
       this.icone = `http://openweathermap.org/img/wn/${codigo}@2x.png`;
     });
-    this.sacoles = fs.listarOrd('sacole', 'quantidade', 'asc');
+    this.sacoles = this.fs.listarOrd('sacole', 'quantidade', 'asc');
+    console.log(this.sacoles);
     this.usuarioLogado = this.login.usuarioLogado;
     this.menu.enable(true);
   }
