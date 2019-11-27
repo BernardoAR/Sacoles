@@ -77,6 +77,7 @@ export class FirestoreService {
         .update({ ...item })
         .catch(error => {
           if (error.code === 'not-found') {
+            delete item.uid;
             this.firestore.collection(caminho).add({ ...item });
           }
         });

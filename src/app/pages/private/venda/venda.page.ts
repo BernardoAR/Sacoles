@@ -24,10 +24,9 @@ export class VendaPage implements OnInit {
     this.vendaSacole = new Venda();
     this.quantidade = 0;
     this.sacoles = fs.listar('sacole');
-    this.vendas = fs.listarCond('venda', 'pago', '==', '0');
+    this.vendas = fs.listarCond('venda', 'pago', '==', false);
   }
   public gravar() {
-    console.log(this.vendaSacole);
     // Grava os valores corretamente
     this.vendaSacole.sacoles = {
       quantidade: this.quantidade,

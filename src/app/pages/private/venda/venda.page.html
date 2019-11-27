@@ -14,22 +14,16 @@
         <ion-input type="text" [(ngModel)]="vendaSacole.quem"></ion-input>
       </ion-item>
       <ion-item>
+        <ion-label position="floating"><ion-icon name="calendar"></ion-icon></ion-label>
+        <ion-input type="date" [(ngModel)]="vendaSacole.data"></ion-input>
+      </ion-item>
+      <ion-item>
         <ion-label>Pago</ion-label>
-        <ion-select [(ngModel)]="vendaSacole.pago">
-          <ion-select-option value="0">Não</ion-select-option>
-          <ion-select-option value="1">Sim</ion-select-option>
-        </ion-select>
+        <ion-toggle slot="start" [(ngModel)]="vendaSacole.pago"></ion-toggle>
       </ion-item>
       <ion-item>
         <ion-label>Isento</ion-label>
-        <ion-select [(ngModel)]="vendaSacole.isento">
-          <ion-select-option value="0">Não</ion-select-option>
-          <ion-select-option value="1">Sim</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating"><ion-icon name="calendar"></ion-icon></ion-label>
-        <ion-input type="date" [(ngModel)]="vendaSacole.data"></ion-input>
+        <ion-toggle slot="start" [(ngModel)]="vendaSacole.isento"></ion-toggle>
       </ion-item>
       <ion-card>
         <ion-card-header>
@@ -56,7 +50,7 @@
         expand="block"
         color="primary"
         (click)="gravar()"
-        [disabled]="!quantidade || quantidade < 0 || !vendaSacole.pago || vendaSacole.isento ||vendaSacole.data || !sacole"
+        [disabled]="!quantidade || quantidade < 0 || !vendaSacole.quem ||!vendaSacole.data || !sacole"
       >
         Salvar
       </ion-button>
