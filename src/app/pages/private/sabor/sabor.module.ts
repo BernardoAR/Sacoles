@@ -1,25 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SaborPage } from './sabor.page';
+import { SaborPageRoutingModule } from './sabor-routing.module';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: SaborPage
-  }
-];
+import { SaborPage } from './sabor.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    SaborPageRoutingModule
   ],
   declarations: [SaborPage]
 })

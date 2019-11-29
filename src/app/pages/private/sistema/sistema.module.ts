@@ -1,25 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SistemaPage } from './sistema.page';
+import { SistemaPageRoutingModule } from './sistema-routing.module';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: SistemaPage
-  }
-];
+import { SistemaPage } from './sistema.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    SistemaPageRoutingModule
   ],
   declarations: [SistemaPage]
 })

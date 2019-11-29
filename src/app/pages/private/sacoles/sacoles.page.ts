@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Sacole } from 'src/app/models/Sacole';
-import { FirestoreService } from 'src/app/services/firestore.service';
+import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 
 @Component({
   selector: 'app-sacoles',

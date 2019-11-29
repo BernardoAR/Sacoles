@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FirestoreService } from 'src/app/services/firestore.service';
 import { Sabor } from 'src/app/models/Sabor';
+import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 
 @Component({
   selector: 'app-sabor',

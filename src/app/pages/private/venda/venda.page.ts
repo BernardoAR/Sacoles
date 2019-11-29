@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Venda } from 'src/app/models/Venda';
-import { FirestoreService } from 'src/app/services/firestore.service';
+import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 
 @Component({
   selector: 'app-venda',

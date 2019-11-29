@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tipo } from 'src/app/models/Tipo';
-import { FirestoreService } from 'src/app/services/firestore.service';
+import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 
 @Component({
   selector: 'app-tipo',

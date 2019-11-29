@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tamanho } from 'src/app/models/Tamanho';
-import { FirestoreService } from 'src/app/services/firestore.service';
+import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 
 @Component({
   selector: 'app-tamanho',
@@ -25,6 +25,5 @@ export class TamanhoPage implements OnInit {
   public apagar(uid: string) {
     this.fs.deletar(uid, 'tamanho');
   }
-
   ngOnInit() {}
 }

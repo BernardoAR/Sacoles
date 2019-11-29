@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/login.service';
+import { LoginService } from 'src/app/services/login/login.service';
 import { MenuController } from '@ionic/angular';
-import { FirestoreService } from 'src/app/services/firestore.service';
+import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 
 @Component({
   selector: 'app-sistema',
@@ -18,13 +18,12 @@ export class SistemaPage implements OnInit {
     private menu: MenuController,
     private fs: FirestoreService
   ) {
-    this.sacoles = fs.listarOrd('sacole', 'quantidade', 'asc');
+    this.sacoles = this.fs.listarOrd('sacole', 'quantidade', 'asc');
     this.usuarioLogado = this.login.usuarioLogado;
     this.menu.enable(true);
   }
-
-  ngOnInit() {}
   public sair() {
     this.login.logout();
   }
+  ngOnInit() {}
 }
